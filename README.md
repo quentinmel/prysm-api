@@ -93,15 +93,21 @@ PORT=3000
 Créez une table `rooms` dans Supabase avec la structure suivante :
 
 ```sql
-CREATE TABLE rooms (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+CREATE TABLE IF NOT EXISTS public.rooms (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  creator_id UUID NOT NULL REFERENCES public.users(id) ON DELETE CASCADE,
+  name TEXT NOT NULL,
+  description TEXT,
+  type TEXT CHECK (type IN ('public', 'private')) DEFAULT 'public',
+  match_date TIMESTAMP WITH TIME ZONE NOT NULL,
+  deadline_date TIMESTAMP WITH TIME ZONE NOT NULL,
   team_home TEXT NOT NULL,
   team_away TEXT NOT NULL,
-  status TEXT NOT NULL,
-  match_date TIMESTAMP WITH TIME ZONE NOT NULL,
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-  score_home INTEGER,
-  score_away INTEGER
+  result_home INTEGER,
+  result_away INTEGER,
+  status TEXT CHECK (status IN ('open', 'locked', 'finished')) DEFAULT 'open',
+  entry_fee INTEGER DEFAULT 10,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 ```
 
@@ -338,24 +344,12 @@ prysm-api/
 ├── static/            # Fichiers statiques
 │   └── swagger.html   # Interface Swagger UI
 ├── .env               # Variables d'environnement (non versionné)
-├── .env.example       # Exemple de configuration
 ├── .gitignore         # Fichiers à ignorer
 ├── go.mod             # Dépendances Go
 ├── go.sum             # Checksums des dépendances
 ├── main.go            # Point d'entrée
-├── README.md          # Documentation
-└── test-api.sh        # Script de test
+└── README.md          # Documentation
 ```
-
-## 🤝 Contribution
-
-Les contributions sont les bienvenues ! N'hésitez pas à :
-
-1. Fork le projet
-2. Créer une branche (`git checkout -b feature/AmazingFeature`)
-3. Commit vos changements (`git commit -m 'Add AmazingFeature'`)
-4. Push vers la branche (`git push origin feature/AmazingFeature`)
-5. Ouvrir une Pull Request
 
 ## 📝 License
 
