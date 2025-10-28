@@ -44,7 +44,7 @@ API REST pour la plateforme de prédictions Prysm. Cette API permet d'accéder a
 ### Cloner le projet
 
 ```bash
-git clone https://github.com/votre-username/prysm-api.git
+git clone https://github.com/quentinmel/prysm-api.git
 cd prysm-api
 ```
 
