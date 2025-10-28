@@ -1,6 +1,6 @@
 # 🏆 Prysm API
 
-API REST pour la plateforme de prédictions football Prysm. Cette API permet d'accéder aux données des compétitions, matchs et prédictions de manière simple et efficace.
+API REST pour la plateforme de prédictions Prysm. Cette API permet d'accéder aux données des compétitions, matchs et prédictions de manière simple et efficace.
 
 ## 📋 Table des matières
 
@@ -16,7 +16,7 @@ API REST pour la plateforme de prédictions football Prysm. Cette API permet d'a
 
 ## ✨ Fonctionnalités
 
-- 🏆 Gestion des compétitions de football
+- 🏆 Gestion des compétitions
 - ⚽ Suivi des matchs en temps réel
 - 📊 Accès aux prédictions des participants
 - 🔍 Filtres avancés (statut, pays, date)
